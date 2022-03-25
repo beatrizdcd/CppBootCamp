@@ -18,6 +18,7 @@ int countHoles(int num, int holes[]);
 
 int main() {
     int holes[] = { 1, 0, 0, 0, 1, 0, 1, 0, 2, 1 };
+    //reference     0  1  2  3  4  5  6  7  8  9
     int num;
 
     cout << "Enter a number: ";
@@ -32,8 +33,8 @@ int countHoles(int num, int holes[]){
     int totalHoles = 0;
     while (num > 0){
         int aux = num % 10;
-        totalHoles = totalHoles + holes[aux];
-        num = num / 10;
+        totalHoles += holes[aux];
+        num /= 10;
     }
     return totalHoles;
 }
