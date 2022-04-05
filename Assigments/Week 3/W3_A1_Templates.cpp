@@ -12,8 +12,7 @@ using namespace std;
 class Shape {
 public:
     float perimeter;
-    float area;  
-    int x; 
+    float area;
   
     Shape () {}
 
