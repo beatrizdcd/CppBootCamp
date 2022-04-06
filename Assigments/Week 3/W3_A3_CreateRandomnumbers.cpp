@@ -1,27 +1,26 @@
-/*
-Generate random numbers between 0-33, ten thousand times, then print how many duplicates of each number
-you have generated -- print in ascending order.
-*/
-
 #include <iostream>
 #include <cstdlib>
+#include <set>
 
 using namespace std;
 
 int main(){
-    int size = 5;
+    int size = 10000;
     int min = 0;
     int max = 33;
     int randint(int, int), i;
-    int randomN [size];
+    set<int> nrandom;
 
-    cout << "Print random numbers between 0 and 33: " <<endl;
-    for (i=0; i<size; i++){
-        randomN[i] = randint(min,max);     //create a random nuber between 0 and 33
-        cout << randomN[i] << ' ';
+    for (i = 1; i <= size; i++){
+        nrandom.insert(randint(min,max));
     }
-    cout << endl<<endl;
+  
+    cout << "Output of begin and end: ";
+    for (auto it = nrandom.begin(); it != nrandom.end(); ++it)
+        cout << *it << " ";
+  
 
+    cout << endl<<endl;
 
     return 0;
 }
