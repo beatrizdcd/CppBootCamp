@@ -1,3 +1,8 @@
+/*
+Generate random numbers between 0-33, ten thousand times, then print how many duplicates of each number
+you have generated -- print in ascending order.
+*/
+
 #include <iostream>
 #include <cstdlib>
 #include <set>
