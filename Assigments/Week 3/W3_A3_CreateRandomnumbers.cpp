@@ -4,8 +4,8 @@ you have generated -- print in ascending order.
 */
 
 #include <iostream>
-#include <cstdlib>
-#include <set>
+#include <vector>
+#include <algorithm> 
 
 using namespace std;
 
@@ -14,16 +14,21 @@ int main(){
     int min = 0;
     int max = 33;
     int randint(int, int), i;
-    set<int> nrandom;
+    vector<int> vrandom;
 
+    //creating a random data with values between 0 and 33
     for (i = 1; i <= size; i++){
-        nrandom.insert(randint(min,max));
+        vrandom.push_back(randint(min,max));
     }
-  
-    cout << "Output of begin and end: ";
-    for (auto it = nrandom.begin(); it != nrandom.end(); ++it)
-        cout << *it << " ";
-  
+
+    //sort the data
+    sort(vrandom.begin(), vrandom.end());
+
+    // counting duplicate numbers in the vector
+     for (i = min;i <= max;i++){
+        int totalCount = count (vrandom.begin(), vrandom.end(), i);
+        cout << "Number " << i << " has " << totalCount  << " duplicates.\n";
+   }
 
     cout << endl<<endl;
 
