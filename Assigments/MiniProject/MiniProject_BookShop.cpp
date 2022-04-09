@@ -10,11 +10,75 @@ in constructors to allocate memory space required. Implement C++ program for the
 */
 #include "MiniProject_BookShop.hpp"
 
+//Book b[nBooks];
+Book *bptr[100]; 
+
+void printMenu(int &choice);
+void searchBook();
 
 int main(){
-    Book b1;
-    
-    b1.printMenu();
 
+    //Book *bptr[100];  // create an array of pointers 
+
+
+    int choice;
+    //Book b[nBooks];
+    while(nBooks >= 0){
+        printMenu (choice);
+        switch (choice) {
+            case 1:
+                b[nBooks].newBook();
+                break;
+            case 2:
+                b[nBooks].buyBook();
+                break;
+            case 3:
+                searchBook();
+                break;
+            case 4:
+                b[nBooks].editBook();
+                break;
+            case 5:
+                cout<< endl << "Bye." << endl;
+                break;    
+            default:
+                cout << "Choice not valid." << endl;
+            break;
+     }
+    break; 
+    }  
+    
     return 0;
 }
+
+void printMenu (int &choice){ // I sent the value of choice
+    cout <<"      - MENU -"<<endl;
+    cout <<"-----------------------"<<endl;
+    cout<< "1. Entry of New Book"<<endl;
+    cout<< "2. Buy Book"<<endl;
+    cout<< "3. Search For Book"<<endl;
+    cout<< "4. Edit Details Of Book"<<endl;
+    cout<< "5. Exit"<<endl<<endl;
+    cout<< "Enter your Choice: ";
+    cin >> choice;
+    cin.ignore();
+}
+
+//CHOICE 3
+void searchBook(){   
+    string titleSearch, authorSearch;
+    cout<< endl<< "- Enter Title Of Book: ";
+    getline(cin, titleSearch);
+    cout << "- Enter Author Of Book: ";
+    getline(cin, authorSearch);
+
+    for (int i = 0; i < nBooks ; i++){
+        bool (titleSearch == b[i].title && authorSearch == b[i].author){
+            cout<< endl << "Book Found Sucessfully"<<endl;
+            b[i].printBook();
+        }else{
+            cout<< endl << "Book not found."<<endl<<endl;
+        }
+    }
+}
+

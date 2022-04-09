@@ -2,68 +2,28 @@
 
 using namespace std;
 
-int nBooks;
+int const nBooks = 100;
 
 class Book {
     public:
-        string author;
-        string title;
-        string publisher;
+        string author, title, publisher;
         double price;
         unsigned int stock;
-        int choice;
 
     public:
-        void printMenu();
+       // void printMenu();
         void newBook();
         void buyBook();
-        void searchBook();
+       // void searchBook(Book* b);
         void editBook();
         void exit();
         void printBook();
-
 };
 
-void Book::printMenu (){
-    cout <<"      - MENU -"<<endl;
-    cout <<"-----------------------"<<endl;
-    cout<< "1. Entry of New Book"<<endl;
-    cout<< "2. Buy Book"<<endl;
-    cout<< "3. Search For Book"<<endl;
-    cout<< "4. Edit Details Of Book"<<endl;
-    cout<< "5. Exit"<<endl<<endl;
-    cout<< "Enter your Choice: ";
-    cin >> choice;
-    cin.ignore();
-
-
-    switch (choice) {
-        case 1:
-            newBook();
-            printMenu ();
-            break;
-        case 2:
-            buyBook();
-            printMenu ();
-            break;
-        case 3:
-            searchBook();
-            printMenu ();
-            break;
-        case 4:
-            editBook();
-            printMenu ();
-            break;
-        case 5:
-            break;
-        default:
-            cout << "Choice not valid." << endl;
-            break;
-  }   
-}
 
 //CHOICE 1
-void Book::newBook(){   
+void Book::newBook(){ 
+    *bptr = new Book();
     cout<< endl <<  "- Enter Title Name:  ";
     getline(cin, title);
     cout<< "- Enter Author Name:  ";
@@ -84,9 +44,11 @@ void Book::newBook(){
         cin.ignore();
     }
     cout <<endl;
+    *bptr++;
 }
 
 //CHOICE 2
+
 void Book::buyBook(){
     int nBuy;
 
@@ -96,7 +58,7 @@ void Book::buyBook(){
     cout<<  "- Enter Author Of Book:  ";
     getline(cin, author);
     cin.get();
-    cout<<  "- Enter Number Of Books to buy:  ";    // If enter a number i have a problem!!!!
+    cout<<  "- Enter Number Of Books to buy:  ";   
     cin >> nBuy;
     if(nBuy <= stock){
          cout<< endl << "Books Bought Sucessfully"<<endl;
@@ -117,19 +79,17 @@ void Book::printBook(){
 }
 
 //CHOICE 3
-void Book::searchBook(){
-    string titleSearch, authorSearch;
-    cout<< endl<< "- Enter Title Of Book: ";
-    getline(cin, titleSearch);
-    cout << "- Enter Author Of Book: ";
-    getline(cin, authorSearch);
+//void searchBook(Book* b){   //pass the pointer to the array 
+
+/*
     if (titleSearch == title && authorSearch == author){
         cout<< endl << "Book Found Sucessfully"<<endl;
         printBook();
     }else{
         cout<< endl << "Book not found."<<endl<<endl;
     }
-}
+    */
+
 
 //CHOICE 4
 void Book::editBook(){
@@ -138,6 +98,7 @@ void Book::editBook(){
     getline(cin, titleEdit);
     cout << "- Enter Author Of Book: ";
     getline(cin, authorEdit);
+
     if (titleEdit == title && authorEdit == author){
         cout<< endl << "Book Found Sucessfully"<<endl;
         cout<< "Please, enter the new information: "<<endl;
