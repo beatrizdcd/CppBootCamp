@@ -26,15 +26,13 @@ class Book{
 
 const int nBooks = 100;  
 Book *bookPtr[nBooks];   // array of pointers to book
-static int s = 0;    // number of books
+int s = 0;    // number of books
 int choice;
 
 void printMenu(int &choice);
-//bool compare();
 void buyBook();
 void searchBook();
 void editBook();
-//void exit();
 
 int main(){
 
@@ -85,9 +83,15 @@ void printMenu (int &choice){ // I sent the value of choice
     cout<< "4. Edit Details Of Book"<<endl;
     cout<< "5. Exit"<<endl<<endl;
     cout<< "Enter your Choice: ";
-    cin >> choice;
+    
+    while (!(cin>>choice)){
+        cout<< "Not valid value. Please, enter a number.";
+        cin.clear();
+        cin.ignore();
+    }
+    //cin >> choice;
     cin.ignore();
-    cout<< endl;
+   // cout<< endl;
 }
 
 //CHOICE 1
@@ -123,21 +127,11 @@ void Book::printBook(){
     cout << "- Price:  "<< price << endl;
     cout << "- Number of Copies:  "<< stock << endl<< endl;
 }
-/*
-bool compare (string &searchTitle, string &searchAuthor){
-    for (int i = 0; i < s ;i++){
-        if(searchTitle == bookPtr[i]->title && searchAuthor == bookPtr[i]->author){
-            return true, i;
-        }else{
-            cout<< endl << "Book not found."<<endl<<endl;
-        }
-    }
-}
-*/
 
 //CHOICE 2
 void buyBook(){
     int nBuy;
+    int count = 0;
     string searchTitle, searchAuthor;
     //searchBook();
     cout<< endl << "- Enter Title of Book:  ";
@@ -147,25 +141,29 @@ void buyBook(){
 
     for (int i = 0; i < s ;i++){
         if(searchTitle == bookPtr[i]->title && searchAuthor == bookPtr[i]->author){
-            cout<< endl << "Book Found Sucessfully"<<endl;
+            cout<< endl << "Book Found Sucessfully!"<<endl<<endl;
+            count++;
             cout<<  "- Enter Number of Books to buy:  ";   
             cin >> nBuy;
             if(nBuy <= bookPtr[i]->stock){
                 cout<< endl << "Thanks for your purchase!"<<endl;
                 cout<< "Amount:  " << nBuy*(bookPtr[i]->price) <<" €"<<endl<<endl;
+                bookPtr[i]->stock -= nBuy;
             }else{
                 cout<< endl << "Not enough books in our stock."<<endl;
                 cout<< "Books in stock:  " << bookPtr[i]->stock <<endl<<endl;
             }
-        }else{
-            cout<< endl << "Book not found."<<endl<<endl;
         }
+    }
+    if (count ==0){
+        cout<< endl << "Book not found."<<endl<<endl;
     }
 }
 
 //CHOICE 3
 void searchBook(){   
     string searchTitle, searchAuthor;
+    int count = 0;
     cout<< endl << "- Enter Title of Book:  ";
     getline(cin, searchTitle);
     cout<<  "- Enter Author of Book:  ";
@@ -174,11 +172,13 @@ void searchBook(){
     for (int i = 0; i < s ;i++){
         if (searchTitle == bookPtr[i]->title && searchAuthor == bookPtr[i]->author){
             cout<< endl << "Book Found Sucessfully"<<endl;
-            cout << "BOOK "<<i+1<<" :"<<endl;
+            cout << "BOOK INFORMATION: "<<endl;
             bookPtr[i]->printBook();
-        }else{
-            cout<< endl << "Book not found."<<endl<<endl;
+            count++;
         }
+    }
+    if (count ==0){
+        cout<< endl << "Book not found."<<endl<<endl;
     }
 }
 
@@ -193,13 +193,12 @@ void editBook(){
 
     for (int i = 0; i < s ;i++){
         if (titleEdit == bookPtr[i]->title && authorEdit == bookPtr[i]->author){
-            cout<< endl << "Book Found Sucessfully"<<endl;
+            cout<< endl << "Book Found Sucessfully!"<<endl<<endl;
             bookPtr[i] = new Book;
             cout<< "Please, enter the new information: "<<endl;
             bookPtr[i]->addBook();
             count++;
         }
-        
     }
     if (count ==0){
         cout<< endl << "Book not found."<<endl<<endl;
