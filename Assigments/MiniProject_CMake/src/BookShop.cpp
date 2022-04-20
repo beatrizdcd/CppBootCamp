@@ -1,63 +1,23 @@
-/*A book shop maintains the inventory of books that are being sold at the shop. The list includes details such as
-author, title, price, publisher and stock position. Whenever a customer wants a book, the sales person inputs
-the title and author and the system searches the list and displays whether it is available or not. If it is not, an
-appropriate message is displayed. If it is, then the system displays the book details and requests for the number
-of copies required. If the requested copies book details and requests for the number of copies required. If the
-requested copies are available, the total cost of the requested copies is displayed; otherwise the message
-“Required copies not in stock” is displayed.
-Design a system using a class called books with suitable member functions and Constructors. Use new operator
-in constructors to allocate memory space required. Implement C++ program for the system.
-*/
-
 #include <iostream>
-#include<string.h>
-
+#ifndef MYLIB_H1
+#define MYLIB_H1
+#include "BookShop.h"
+#endif
 using namespace std;
+  Book *bookPtr[100]; // array of pointers to book
 
-class Book{
-    public:
-        string author, title, publisher;
-        double price;
-        unsigned int stock;
-    public:
-        Book(){
-            author = "undefined";
-            title = "undefined";
-            publisher = "undefined";
-            price = 0;
-            stock = 0;
-        }
-        void addBook();
-        void printBook();    
-         ~Book(){
-             cout << "destructor called"<< endl;
-         }
-};
-
-const int nBooks = 100;  
-Book *bookPtr[nBooks];   // array of pointers to book
 int s = 0;    // number of books
-int choice;
-
-void printMenu(int &choice);
-void buyBook();
-void searchBook();
-void editBook();
-void chooseOption();
-
-int main(){
-
- chooseOption();
+int choice = 0;
 
 
-    
-    return 0;
 
-}
+
+
+
 void chooseOption(){
 
     while(choice !=5){
-        printMenu (choice);
+        printMenu ();
         switch (choice) {
             case 1:
                 bookPtr[s] = new Book;
@@ -86,8 +46,7 @@ void chooseOption(){
      }
     }  
 }
-
-void printMenu (int &choice){ // I sent the value of choice
+void printMenu (){ // I sent the value of choice
     cout <<"      - MENU -"<<endl;
     cout <<"-----------------------"<<endl;
     cout<< "1. Entry of New Book"<<endl;
@@ -190,7 +149,7 @@ void searchBook(){
             count++;
         }
     }
-    if (count ==0){
+    if (count == 0){
         cout<< endl << "Book not found."<<endl<<endl;
     }
 }
@@ -211,9 +170,10 @@ void editBook(){
             cout<< "Please, enter the new information: "<<endl;
             bookPtr[i]->addBook();
             count++;
+            //delete bookPtr[i];
         }
     }
-    if (count ==0){
+    if (count == 0){
         cout<< endl << "Book not found."<<endl<<endl;
     }
 }

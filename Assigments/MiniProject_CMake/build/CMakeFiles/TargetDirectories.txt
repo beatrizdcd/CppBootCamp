@@ -1,0 +1,4 @@
+/home/bdecastr/projects/assigment repo/CppBootCamp_Assig/Assigments/MiniProject_CMake/build/CMakeFiles/rebuild_cache.dir
+/home/bdecastr/projects/assigment repo/CppBootCamp_Assig/Assigments/MiniProject_CMake/build/CMakeFiles/edit_cache.dir
+/home/bdecastr/projects/assigment repo/CppBootCamp_Assig/Assigments/MiniProject_CMake/build/CMakeFiles/myBookLib.dir
+/home/bdecastr/projects/assigment repo/CppBootCamp_Assig/Assigments/MiniProject_CMake/build/CMakeFiles/bookShop.dir

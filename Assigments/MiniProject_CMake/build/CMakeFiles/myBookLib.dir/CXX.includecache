@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/BookShop.h
+iostream
+-
+string.h
+-
+
+/home/bdecastr/projects/assigment repo/CppBootCamp_Assig/Assigments/MiniProject_CMake/src/BookShop.cpp
+iostream
+-
+BookShop.h
+/home/bdecastr/projects/assigment repo/CppBootCamp_Assig/Assigments/MiniProject_CMake/src/BookShop.h
+
