@@ -5,17 +5,7 @@
 using namespace std;
 
 
-template <class T1,class T2>
-void compare(const T1 &a, const T2 &b) { 
-     if (a.area == b.area && a.perimeter == b.perimeter){
-            std::cout << "Both shapes are equal. ";
 
-        }else if (a.area > b.area) {
-            std::cout << "Shapes are not equal. "  ;
-        }else if (a.area < b.area){
-            std::cout << "Shapes are not equal. "  ;
-        }
-}
 
 Circle::Circle(int r){
    area = M_PI * pow(r,2);  
