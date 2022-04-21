@@ -39,7 +39,7 @@ Book *bookPtr[nBooks];   // array of pointers to book
 int s = 0;    // number of books
 int choice;
 
-void printMenu(int &choice);
+void printMenu();
 void buyBook();
 void searchBook();
 void editBook();
@@ -48,22 +48,19 @@ void chooseOption();
 int main(){
 
  chooseOption();
-
-
     
     return 0;
-
 }
+
 void chooseOption(){
 
     while(choice !=5){
-        printMenu (choice);
+        printMenu ();
         switch (choice) {
             case 1:
                 bookPtr[s] = new Book;
                 bookPtr[s]->addBook();
                 s++;  //count new book
-                
                 break;
             case 2:
                 buyBook();
@@ -76,9 +73,11 @@ void chooseOption(){
                 break;
             case 5:
                 cout<< endl << "Bye." << endl;
+                for (int i = 0; i < s; i++)
+                {
+                    delete bookPtr[i];
+                }
                 choice = 5;
-
-                //delete [] bookPtr;
                 break;
             default:
                 cout << "Choice not valid." << endl;
@@ -87,7 +86,7 @@ void chooseOption(){
     }  
 }
 
-void printMenu (int &choice){ // I sent the value of choice
+void printMenu (){ // I sent the value of choice
     cout <<"      - MENU -"<<endl;
     cout <<"-----------------------"<<endl;
     cout<< "1. Entry of New Book"<<endl;

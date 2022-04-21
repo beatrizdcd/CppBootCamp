@@ -4,14 +4,11 @@
 #include "BookShop.h"
 #endif
 using namespace std;
-  Book *bookPtr[100]; // array of pointers to book
 
+const int nBooks = 100;  
+Book *bookPtr[nBooks];   // array of pointers to book
 int s = 0;    // number of books
-int choice = 0;
-
-
-
-
+int choice;
 
 
 void chooseOption(){
@@ -22,8 +19,7 @@ void chooseOption(){
             case 1:
                 bookPtr[s] = new Book;
                 bookPtr[s]->addBook();
-                s++;  //count new book
-                
+                s++;  //count new boo
                 break;
             case 2:
                 buyBook();
@@ -35,10 +31,12 @@ void chooseOption(){
                 editBook();
                 break;
             case 5:
-                cout<< endl << "Bye." << endl;
+            cout<< endl << "Bye." << endl;
+                for (int i = 0; i < nBooks; i++)
+                {
+                    delete bookPtr[i];
+                }
                 choice = 5;
-
-                //delete [] bookPtr;
                 break;
             default:
                 cout << "Choice not valid." << endl;
@@ -46,6 +44,7 @@ void chooseOption(){
      }
     }  
 }
+
 void printMenu (){ // I sent the value of choice
     cout <<"      - MENU -"<<endl;
     cout <<"-----------------------"<<endl;
@@ -105,7 +104,6 @@ void buyBook(){
     int nBuy;
     int count = 0;
     string searchTitle, searchAuthor;
-    //searchBook();
     cout<< endl << "- Enter Title of Book:  ";
     getline(cin, searchTitle);
     cout<<  "- Enter Author of Book:  ";
@@ -170,7 +168,6 @@ void editBook(){
             cout<< "Please, enter the new information: "<<endl;
             bookPtr[i]->addBook();
             count++;
-            //delete bookPtr[i];
         }
     }
     if (count == 0){
