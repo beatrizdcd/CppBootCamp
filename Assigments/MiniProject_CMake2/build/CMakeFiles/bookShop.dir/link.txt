@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/bookShop.dir/main.cpp.o  -o bookShop libmyBookLib.a 

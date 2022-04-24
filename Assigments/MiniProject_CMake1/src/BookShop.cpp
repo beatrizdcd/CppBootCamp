@@ -1,8 +1,10 @@
-#include <iostream>
 #ifndef MYLIB_H1
 #define MYLIB_H1
+
 #include "BookShop.h"
-#endif
+
+#include <iostream>
+
 using namespace std;
 
 const int nBooks = 100;  
@@ -60,9 +62,6 @@ void printMenu (){ // I sent the value of choice
         cin.clear();
         cin.ignore();
     }
-    //cin >> choice;
-    cin.ignore();
-   // cout<< endl;
 }
 
 //CHOICE 1
@@ -174,3 +173,5 @@ void editBook(){
         cout<< endl << "Book not found."<<endl<<endl;
     }
 }
+
+#endif

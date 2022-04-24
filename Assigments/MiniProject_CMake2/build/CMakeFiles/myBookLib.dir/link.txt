@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmyBookLib.a  CMakeFiles/myBookLib.dir/src/printMenu.cpp.o CMakeFiles/myBookLib.dir/src/addBook.cpp.o CMakeFiles/myBookLib.dir/src/buyBook.cpp.o CMakeFiles/myBookLib.dir/src/searchBook.cpp.o CMakeFiles/myBookLib.dir/src/editBook.cpp.o
+/usr/bin/ranlib libmyBookLib.a

@@ -61,6 +61,7 @@ void chooseOption(){
                 bookPtr[s] = new Book;
                 bookPtr[s]->addBook();
                 s++;  //count new book
+
                 break;
             case 2:
                 buyBook();
